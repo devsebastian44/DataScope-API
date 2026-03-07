@@ -4,6 +4,7 @@
 ![GitLab](https://img.shields.io/badge/GitLab-Repository-orange?logo=gitlab)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen)
+![API](https://img.shields.io/badge/API-REST-blue)
 
 API REST profesional para Análisis Exploratorio de Datos construida con FastAPI, Python, pandas y seaborn.
 
