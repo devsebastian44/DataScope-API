@@ -68,21 +68,6 @@ La API estará disponible en: `http://localhost:8000`
 - **ReDoc**: `http://localhost:8000/redoc`
 - **Health Check**: `http://localhost:8000/health`
 
-## ☁️ Despliegue en Render
-
-El proyecto ya está configurado para desplegarse en Render.
-
-1. Crea una cuenta en [Render.com](https://render.com)
-2. Crea un nuevo **Web Service**
-3. Conecta tu repositorio de GitHub
-4. Render detectará automáticamente el archivo `render.yaml` o usará la siguiente configuración:
-   - **Runtime**: Python 3
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `gunicorn -k uvicorn.workers.UvicornWorker app.main:app`
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
-
-
 ## 📚 Endpoints
 
 ### Dataset Management
