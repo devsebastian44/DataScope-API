@@ -1,28 +1,25 @@
-# FastAPI y servidor
-fastapi>=0.109.0
-uvicorn[standard]>=0.27.0
-gunicorn>=21.2.0
-python-multipart>=0.0.6
+# Versiones MÁS RECIENTES (marzo 2026)
+fastapi==0.115.5
+uvicorn[standard]==0.32.0
+python-multipart==0.0.12
 
-# Procesamiento de datos
-pandas>=2.1.4
-numpy>=1.26.3
-openpyxl>=3.1.2
+# Data Science
+pandas==2.2.3
+numpy==1.26.4  # Numpy 2.0 tiene breaking changes
+scipy==1.14.1  # ← Versión más nueva
+matplotlib==3.9.2
+seaborn==0.13.2
 
-# Visualización
-matplotlib>=3.8.2
-seaborn>=0.13.1
-
-# Validación y configuración
-pydantic>=2.5.3
-pydantic-settings>=2.1.0
-python-dotenv>=1.0.0
+# Validación
+pydantic==2.10.3
+pydantic-settings==2.7.0
+python-dotenv==1.0.1
 
 # Utilidades
-aiofiles>=23.2.1
-Pillow>=10.2.0
+aiofiles==24.1.0
+Pillow>=11.0.0
+openpyxl==3.1.5
 
 # Testing
-pytest>=7.4.4
-httpx>=0.26.0
-scipy>=1.10.0
+pytest==8.3.4
+httpx==0.28.1

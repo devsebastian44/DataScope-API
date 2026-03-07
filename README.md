@@ -1,5 +1,10 @@
 # 🚀 EDA API - Exploratory Data Analysis
 
+![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)
+![GitLab](https://img.shields.io/badge/GitLab-Repository-orange?logo=gitlab)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Status](https://img.shields.io/badge/Status-Stable-brightgreen)
+
 API REST profesional para Análisis Exploratorio de Datos construida con FastAPI, Python, pandas y seaborn.
 
 ## 📋 Características
@@ -303,11 +308,3 @@ PLOT_DPI=100
 ```bash
 pytest tests/
 ```
-
-## 📄 Licencia
-
-MIT License
-
-## 👥 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor abre un issue o pull request.
