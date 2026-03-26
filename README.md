@@ -2,9 +2,8 @@
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)
 ![GitLab](https://img.shields.io/badge/GitLab-Private_Lab-orange?logo=gitlab)
-![GitHub](https://img.shields.io/badge/GitHub-Public_Portfolio-black?logo=github)
+![License](https://img.shields.io/badge/License-MIT-green)
 ![DevSecOps](https://img.shields.io/badge/Workflow-DevSecOps-green)
-![CI/CD](https://img.shields.io/badge/CI/CD-GitLab_Pipelines-blue?logo=gitlab)
 
 `DataScope-API` es una solución backend de grado profesional diseñada para el Análisis Exploratorio de Datos (EDA). Este repositorio implementa una arquitectura limpia, estándares de seguridad por diseño y un flujo de trabajo DevSecOps avanzado para la sincronización entre entornos privados y públicos.
 
@@ -76,23 +75,31 @@ graph LR
 
 ### Configuración Rápida
 
-```powershell
-# Clonar repositorio (Desde GitLab)
+```bash
+# 1. Clonar repositorio (Desde GitLab)
 git clone <gitlab-url>
 cd DataScope-API
 
-# Crear y activar entorno virtual
+# 2. Crear entorno virtual
 python -m venv venv
-.\venv\Scripts\Activate
 
-# Instalar dependencias profesionales
+# 3. Activar entorno virtual
+# En Windows:
+.\venv\Scripts\Activate
+# En Linux/macOS:
+source venv/bin/activate
+
+# 4. Instalar dependencias profesionales
 pip install -r requirements.txt
 
-# Inicializar configuración
+# 5. Inicializar configuración
 cp configs/.env.example .env
 
-# Ejecutar con PYTHONPATH ajustado
+# 6. Ejecutar con PYTHONPATH ajustado
+# En Windows:
 $env:PYTHONPATH = "src"; python -m app.main
+# En Linux/macOS:
+PYTHONPATH=src python3 -m app.main
 ```
 
 ## 🛠️ Tecnologías Core
