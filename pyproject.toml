@@ -1,0 +1,15 @@
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--cov=src/app --cov-report=term"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "C4"]
+
+[tool.bandit]
+exclude_dirs = ["tests", "venv", ".venv", ".git"]
+skips = ["B101"]
