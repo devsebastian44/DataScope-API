@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     DESCRIPTION: str = "API REST profesional para análisis exploratorio"
 
+    # Server Settings
+    HOST: str = "127.0.0.1"
+    PORT: int = 8000
+
     # CORS
     ALLOWED_ORIGINS: list = ["*"]  # En producción, dominios concretos
 

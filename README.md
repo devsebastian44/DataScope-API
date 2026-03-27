@@ -86,6 +86,7 @@ python -m venv venv
 # 3. Activar entorno virtual
 # En Windows:
 .\venv\Scripts\Activate
+
 # En Linux/macOS:
 source venv/bin/activate
 
@@ -96,8 +97,10 @@ pip install -r requirements.txt
 cp configs/.env.example .env
 
 # 6. Ejecutar con PYTHONPATH ajustado
+
 # En Windows:
 $env:PYTHONPATH = "src"; python -m app.main
+
 # En Linux/macOS:
 PYTHONPATH=src python3 -m app.main
 ```
