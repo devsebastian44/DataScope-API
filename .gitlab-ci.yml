@@ -1,4 +1,4 @@
-image: python:3.11-slim
+image: python:3.13-slim
 
 stages:
   - lint
@@ -20,8 +20,8 @@ before_script:
 lint:
   stage: lint
   script:
-    - pip install flake8
-    - flake8 src/app
+    - pip install ruff
+    - ruff check src/app
 
 test:
   stage: test
