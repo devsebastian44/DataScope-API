@@ -77,7 +77,7 @@ graph LR
 
 ```bash
 # 1. Clonar repositorio (Desde GitLab)
-git clone <gitlab-url>
+git clone https://gitlab.com/group-data-ia-lab/DataScope-API.git
 cd DataScope-API
 
 # 2. Crear entorno virtual
@@ -125,11 +125,6 @@ Este proyecto sigue estrictamente el estándar **Conventional Commits**:
 
 > [!WARNING]
 > Las carpetas `data/uploads` y `data/outputs` están ignoradas por git para evitar fugas de información persistente. Asegúrese de mantener los archivos `.gitkeep` si desea conservar la estructura.
-=/api/v1
-MAX_FILE_SIZE=52428800
-ALLOWED_ORIGINS=["*"]
-PLOT_DPI=100
-```
 
 ## 🧪 Testing
 
