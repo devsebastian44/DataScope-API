@@ -1,26 +1,26 @@
-# Versiones MÁS RECIENTES (marzo 2026)
-fastapi>=0.115.5
-uvicorn[standard]>=0.32.0
+# Versiones MAS RECIENTES (marzo 2026)
+fastapi>=0.135.2
+uvicorn[standard]>=0.42.0
 python-multipart>=0.0.22
-starlette>=0.49.1
+starlette>=1.0.0
 
 # Data Science
-pandas==2.2.3
-numpy==1.26.4  # Numpy 2.0 tiene breaking changes
-scipy==1.14.1  # ← Versión más nueva
-matplotlib==3.9.2
+pandas==3.0.1
+numpy==2.4.3
+scipy==1.17.1
+matplotlib==3.10.8
 seaborn==0.13.2
 
 # Validación
-pydantic==2.10.3
-pydantic-settings==2.7.0
-python-dotenv==1.0.1
+pydantic==2.12.5
+pydantic-settings==2.13.1
+python-dotenv==1.2.2
 
 # Utilidades
-aiofiles==24.1.0
+aiofiles==25.1.0
 Pillow>=12.1.1
 openpyxl==3.1.5
 
 # Testing
-pytest==8.3.4
+pytest==9.0.2
 httpx==0.28.1
