@@ -6,6 +6,7 @@ from app.config import settings
 from app.api.v1.router import api_router
 from app.core.exceptions import EDAException
 
+
 # Crear aplicación FastAPI
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -26,10 +27,15 @@ app.add_middleware(
 )
 
 # Montar directorio de salidas para servir gráficos
-app.mount("/outputs", StaticFiles(directory=str(settings.OUTPUT_DIR)), name="outputs")
+app.mount(
+    "/outputs",
+    StaticFiles(directory=str(settings.OUTPUT_DIR)),
+    name="outputs"
+)
 
 # Incluir routers
 app.include_router(api_router, prefix=settings.API_V1_PREFIX)
+
 
 # Manejador global de excepciones
 @app.exception_handler(EDAException)
@@ -44,6 +50,7 @@ async def eda_exception_handler(request: Request, exc: EDAException):
         }
     )
 
+
 @app.exception_handler(Exception)
 async def general_exception_handler(request: Request, exc: Exception):
     return JSONResponse(
@@ -56,6 +63,7 @@ async def general_exception_handler(request: Request, exc: Exception):
         }
     )
 
+
 # Endpoint de health check
 @app.get("/health", tags=["Health"])
 async def health_check():
@@ -64,6 +72,7 @@ async def health_check():
         "service": settings.PROJECT_NAME,
         "version": settings.VERSION
     }
+
 
 # Endpoint raíz
 @app.get("/", tags=["Root"])
@@ -74,6 +83,7 @@ async def root():
         "docs": "/docs",
         "health": "/health"
     }
+
 
 if __name__ == "__main__":
     import uvicorn

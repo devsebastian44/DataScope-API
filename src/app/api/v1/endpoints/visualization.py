@@ -1,15 +1,21 @@
 from fastapi import APIRouter
-from app.schemas.visualization import VisualizationRequest, VisualizationResponse
+from app.schemas.visualization import VisualizationRequest
 from app.services.visualization_service import VisualizationService
 from app.core.responses import success_response
 
+
 router = APIRouter()
 
-@router.post("/generate", response_model=dict, summary="Generar visualización")
+
+@router.post(
+    "/generate",
+    response_model=dict,
+    summary="Generar visualización"
+)
 async def generate_visualization(request: VisualizationRequest):
     """
     Genera una visualización personalizada del dataset.
-    
+
     **Tipos de gráficos disponibles:**
     - **histogram**: Histograma de distribución (requiere x_column)
     - **boxplot**: Diagrama de caja (requiere x_column, opcional y_column)
@@ -20,7 +26,7 @@ async def generate_visualization(request: VisualizationRequest):
     - **violin**: Gráfico de violín (requiere x_column, opcional y_column)
     - **pairplot**: Matriz de dispersión (opcional columns)
     - **countplot**: Conteo de categorías (requiere x_column)
-    
+
     **Parámetros:**
     - **dataset_id**: ID del dataset
     - **plot_type**: Tipo de gráfico
@@ -34,7 +40,7 @@ async def generate_visualization(request: VisualizationRequest):
     - **figsize_width, figsize_height**: Tamaño de la figura
     - **plot_format**: Formato de salida (png, jpg, svg)
     - **dpi**: Resolución del gráfico
-    
+
     **Retorna:**
     - URL para acceder al gráfico
     - Información del archivo generado
@@ -54,7 +60,7 @@ async def generate_visualization(request: VisualizationRequest):
         plot_format=request.plot_format.value,
         dpi=request.dpi
     )
-    
+
     return success_response(
         message="Visualización generada exitosamente",
         data=result

@@ -1,6 +1,7 @@
 from typing import Any, Optional
 from pydantic import BaseModel
 
+
 class StandardResponse(BaseModel):
     """Respuesta estándar de la API"""
     success: bool
@@ -18,6 +19,7 @@ class StandardResponse(BaseModel):
             }
         }
 
+
 def success_response(message: str, data: Any = None) -> dict:
     """Genera una respuesta exitosa"""
     return StandardResponse(
@@ -25,6 +27,7 @@ def success_response(message: str, data: Any = None) -> dict:
         message=message,
         data=data
     ).model_dump()
+
 
 def error_response(message: str, errors: list = None) -> dict:
     """Genera una respuesta de error"""

@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
+
 class DatasetUploadResponse(BaseModel):
     """Respuesta al subir un dataset"""
     dataset_id: str
@@ -13,10 +14,12 @@ class DatasetUploadResponse(BaseModel):
     upload_timestamp: datetime
     file_size_bytes: int
 
+
 class DataPreviewRequest(BaseModel):
     """Request para previsualizar datos"""
     dataset_id: str
     rows: int = Field(default=10, ge=1, le=100)
+
 
 class DataPreviewResponse(BaseModel):
     """Respuesta con preview de datos"""
@@ -25,19 +28,21 @@ class DataPreviewResponse(BaseModel):
     total_rows: int
     showing_rows: int
 
+
 class DataCleaningRequest(BaseModel):
     """Request para limpieza de datos"""
     dataset_id: str
     drop_duplicates: bool = False
     fill_na_strategy: Optional[str] = Field(
         default=None,
-        description="Estrategia para valores nulos: 'mean', 'median', 'mode', 'drop', 'forward_fill', 'backward_fill'"
+        description="Estrategia nulos: 'mean', 'median', 'mode', etc"
     )
     columns_to_drop: Optional[List[str]] = None
     type_conversions: Optional[Dict[str, str]] = Field(
         default=None,
-        description="Conversiones de tipo: {'column': 'int64', 'another': 'float64'}"
+        description="Conversiones de tipo: {'col': 'int64'}"
     )
+
 
 class DataCleaningResponse(BaseModel):
     """Respuesta de limpieza de datos"""

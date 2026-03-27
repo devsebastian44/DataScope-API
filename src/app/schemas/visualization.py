@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field, validator
 from typing import Optional, List
 from enum import Enum
 
+
 class PlotType(str, Enum):
     """Tipos de gráficos disponibles"""
     HISTOGRAM = "histogram"
@@ -14,11 +15,13 @@ class PlotType(str, Enum):
     PAIRPLOT = "pairplot"
     COUNTPLOT = "countplot"
 
+
 class PlotFormat(str, Enum):
     """Formatos de salida del gráfico"""
     PNG = "png"
     JPG = "jpg"
     SVG = "svg"
+
 
 class VisualizationRequest(BaseModel):
     """Request para generar visualización"""
@@ -43,10 +46,15 @@ class VisualizationRequest(BaseModel):
     @validator('x_column')
     def validate_x_column(cls, v, values):
         plot_type = values.get('plot_type')
-        if plot_type in [PlotType.HISTOGRAM, PlotType.BOXPLOT, PlotType.SCATTER, PlotType.LINE, PlotType.BAR, PlotType.VIOLIN, PlotType.COUNTPLOT]:
+        required_types = [
+            PlotType.HISTOGRAM, PlotType.BOXPLOT, PlotType.SCATTER,
+            PlotType.LINE, PlotType.BAR, PlotType.VIOLIN, PlotType.COUNTPLOT
+        ]
+        if plot_type in required_types:
             if v is None:
                 raise ValueError(f"x_column es requerido para {plot_type}")
         return v
+
 
 class VisualizationResponse(BaseModel):
     """Respuesta con visualización generada"""
