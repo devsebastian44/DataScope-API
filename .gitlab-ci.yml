@@ -32,6 +32,7 @@ test:
 security_scan:
   stage: security
   script:
+    - pip install --upgrade pip wheel
     - pip install bandit safety
     - bandit -r src/app
     - safety check
