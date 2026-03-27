@@ -19,7 +19,7 @@ if (git status --porcelain) {
 
 # 2. Limpieza Local Previa
 Write-Host "[*] Limpiando archivos temporales y cache..." -ForegroundColor Yellow
-Remove-Item -Path "data/outputs/*", "data/uploads/*" -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "data/outputs/*", "data/uploads/*" -Exclude ".gitkeep" -Force -ErrorAction SilentlyContinue
 Remove-Item -Path "__pycache__", ".pytest_cache", ".coverage" -Recurse -Force -ErrorAction SilentlyContinue
 
 # 3. Sincronización con Laboratorio Privado (GitLab)
