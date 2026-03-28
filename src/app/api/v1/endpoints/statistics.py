@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from app.schemas.statistics import StatisticsRequest, DistributionRequest
-from app.services.statistics_service import StatisticsService
-from app.core.responses import success_response
 
+from app.core.responses import success_response
+from app.schemas.statistics import DistributionRequest, StatisticsRequest
+from app.services.statistics_service import StatisticsService
 
 router = APIRouter()
 

@@ -9,6 +9,7 @@ target-version = "py313"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "C4"]
+ignore = ["B008"]
 
 [tool.bandit]
 exclude_dirs = ["tests", "venv", ".venv", ".git"]

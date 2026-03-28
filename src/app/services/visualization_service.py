@@ -1,13 +1,15 @@
 import os
 import uuid
+
 import matplotlib
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
-from app.services.data_processor import DataProcessor
+import seaborn as sns
+
 from app.config import settings
 from app.core.exceptions import VisualizationError
 from app.schemas.visualization import PlotType
+from app.services.data_processor import DataProcessor
 
 matplotlib.use('Agg')  # Backend sin GUI
 
@@ -127,7 +129,7 @@ class VisualizationService:
         except Exception as e:
             if plot_path.exists():
                 plot_path.unlink()
-            raise VisualizationError(str(e))
+            raise VisualizationError(str(e)) from e
 
     @staticmethod
     def _create_histogram(df: pd.DataFrame, x_column: str, color: str):

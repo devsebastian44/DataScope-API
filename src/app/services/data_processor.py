@@ -1,8 +1,10 @@
-import pandas as pd
-import numpy as np
-from typing import Dict, List, Optional
 from datetime import datetime
-from app.core.exceptions import DataValidationError, ColumnNotFoundError
+from typing import Dict, List, Optional
+
+import numpy as np
+import pandas as pd
+
+from app.core.exceptions import ColumnNotFoundError, DataValidationError
 
 
 class DataProcessor:
@@ -119,7 +121,7 @@ class DataProcessor:
                             f"No se pudo convertir '{col}' to {dtype}: "
                             f"{str(e)}"
                         )
-                        raise DataValidationError(msg)
+                        raise DataValidationError(msg) from e
 
         # Actualizar dataset
         cls._datasets[dataset_id] = df

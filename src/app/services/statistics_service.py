@@ -1,9 +1,11 @@
-import pandas as pd
-import numpy as np
 from typing import List, Optional
+
+import numpy as np
+import pandas as pd
 from scipy import stats
-from app.services.data_processor import DataProcessor
+
 from app.schemas.statistics import ColumnStatistics
+from app.services.data_processor import DataProcessor
 
 
 class StatisticsService:

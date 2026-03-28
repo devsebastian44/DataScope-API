@@ -2,10 +2,10 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-from app.config import settings
-from app.api.v1.router import api_router
-from app.core.exceptions import EDAException
 
+from app.api.v1.router import api_router
+from app.config import settings
+from app.core.exceptions import EDAException
 
 # Crear aplicación FastAPI
 app = FastAPI(

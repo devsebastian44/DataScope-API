@@ -2,10 +2,12 @@ import os
 import uuid
 from pathlib import Path
 from typing import Tuple
+
 import pandas as pd
 from fastapi import UploadFile
+
 from app.config import settings
-from app.core.exceptions import InvalidFileFormatError, FileProcessingError
+from app.core.exceptions import FileProcessingError, InvalidFileFormatError
 
 
 class FileHandler:
@@ -52,7 +54,7 @@ class FileHandler:
         except Exception as e:
             if file_path.exists():
                 file_path.unlink()
-            raise FileProcessingError(f"Error guardando archivo: {str(e)}")
+            raise FileProcessingError(f"Error guardando archivo: {str(e)}") from e
 
     @staticmethod
     def load_dataset(file_path: Path) -> pd.DataFrame:
@@ -68,7 +70,7 @@ class FileHandler:
                 msg = f"Extensión no soportada: {file_ext}"
                 raise InvalidFileFormatError(msg)
         except Exception as e:
-            raise FileProcessingError(f"Error cargando dataset: {str(e)}")
+            raise FileProcessingError(f"Error cargando dataset: {str(e)}") from e
 
     @staticmethod
     def get_file_size(file_path: Path) -> int:
