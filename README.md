@@ -1,133 +1,246 @@
-# 🚀 DataScope-API: Professional Exploratory Data Analysis
+# DataScope API
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)
-![GitLab](https://img.shields.io/badge/GitLab-Private_Lab-orange?logo=gitlab)
-![License](https://img.shields.io/badge/License-MIT-green)
-![DevSecOps](https://img.shields.io/badge/Workflow-DevSecOps-green)
-
-`DataScope-API` es una solución backend de grado profesional diseñada para el Análisis Exploratorio de Datos (EDA). Este repositorio implementa una arquitectura limpia, estándares de seguridad por diseño y un flujo de trabajo DevSecOps avanzado para la sincronización entre entornos privados y públicos.
-
-## 🎯 Objetivo Técnico
-
-Proporcionar una interfaz robusta y escalable para la ingesta, limpieza, procesamiento estadístico y visualización de datasets, permitiendo a científicos de datos y analistas acelerar el ciclo de descubrimiento de insights mediante una API de alto rendimiento.
-
-## 🛡️ Enfoque Ético y Profesional
-
-Este proyecto se desarrolla bajo principios de **Security by Design**:
-- **Separación de Entornos**: El código completo, los tests de regresión y la automatización privada residen en GitLab.
-- **Sanitización Automática**: Antes de la publicación en el portafolio público (GitHub), se ejecuta un proceso de limpieza que elimina lógica crítica, configuraciones sensibles y artefactos internos.
-- **Responsabilidad**: Diseñado para fines educativos y profesionales, promoviendo mejores prácticas en el manejo de datos y seguridad de la información.
-
-## 🏗️ Arquitectura del Repositorio
-
-El proyecto utiliza una estructura **src-layout** para garantizar la modularidad y facilitar el empaquetado profesional:
-
-```text
-/ (root)
-├── src/
-│   └── app/            # Lógica central (FastAPI, Services, Core)
-├── tests/              # Batería de pruebas (Exclusivo GitLab)
-├── docs/               # Documentación técnica detallada
-├── diagrams/           # Arquitectura y flujos del sistema
-├── configs/            # Plantillas de configuración (.env.example)
-├── scripts/            # Automatización DevSecOps (publish_public.ps1)
-├── data/               # Persistencia de datos (uploads/outputs)
-├── .gitlab-ci.yml      # Pipeline CI/CD (Linting, Test, Security)
-└── README.md           # Documentación principal
-```
-
-## 🔄 Flujo DevSecOps: GitLab ➔ GitHub
-
-Implementamos una estrategia de **Sincronización Sanitizada**:
-
-1.  **GitLab (Source of Truth)**: Entorno privado de desarrollo con CI/CD completo, análisis estático de seguridad (SAST) y pruebas unitarias/integración.
-2.  **Validación**: Cada cambio en `main` debe pasar el pipeline de GitLab.
-3.  **Sanitización**: Ejecución de `scripts/publish_public.ps1`.
-4.  **GitHub (Public Portfolio)**: Versión curada y segura para exhibición técnica.
-
-### Diagrama de Sincronización
-
-```mermaid
-graph LR
-    GL[GitLab Private Lab] -->|CI/CD Pass| Script[publish_public.ps1]
-    Script -->|Sanitize| Pub[Public Branch]
-    Pub -->|Force Push| GH[GitHub Public Portfolio]
-    
-    subgraph "Eliminado en Sanitización"
-    T[Tests]
-    C[Configs]
-    CI[CI/CD Internal]
-    S[Private Scripts]
-    end
-    
-    Script -.-> T
-    Script -.-> C
-    Script -.-> CI
-    Script -.-> S
-```
-
-## 🚀 Instalación y Uso (Entorno de Desarrollo)
-
-### Requisitos Previos
-
-- Python 3.9+
-- Entorno Virtual (`venv`)
-
-### Configuración Rápida
-
-```bash
-# 1. Clonar repositorio (Desde GitLab)
-git clone https://gitlab.com/group-data-ia-lab/DataScope-API.git
-cd DataScope-API
-
-# 2. Crear entorno virtual
-python -m venv venv
-
-# 3. Activar entorno virtual
-# En Windows:
-.\venv\Scripts\Activate
-
-# En Linux/macOS:
-source venv/bin/activate
-
-# 4. Instalar dependencias profesionales
-pip install -r requirements.txt
-
-# 5. Inicializar configuración
-cp configs/.env.example .env
-
-# 6. Ejecutar con PYTHONPATH ajustado
-
-# En Windows:
-$env:PYTHONPATH = "src"; python -m app.main
-
-# En Linux/macOS:
-PYTHONPATH=src python3 -m app.main
-```
-
-## 🛠️ Tecnologías Core
-
-- **FastAPI**: Inyección de dependencias y rendimiento asíncrono.
-- **Pandas/NumPy**: Motor de procesamiento de datos de alta eficiencia.
-- **Seaborn/Matplotlib**: Generación de insights visuales de calidad editorial.
-- **Pydantic V2**: Validación estricta de esquemas de datos.
-
-## 📝 Estándar de Mensajes de Commit
-
-Este proyecto sigue estrictamente el estándar **Conventional Commits**:
-- `feat:` Nuevas funcionalidades.
-- `fix:` Correcciones de errores.
-- `refactor:` Cambios en el código que no alteran la funcionalidad.
-- `security:` Mejoras o parches de seguridad.
-- `ci:` Cambios en pipelines y automatización.
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat&logo=fastapi&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=flat&logo=pandas&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI%203.0-85EA2D?style=flat&logo=swagger&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat&logo=opensourceinitiative&logoColor=white)
 
 ---
 
-> [!WARNING]
-> Las carpetas `data/uploads` y `data/outputs` están ignoradas por git para evitar fugas de información persistente. Asegúrese de mantener los archivos `.gitkeep` si desea conservar la estructura.
+## 🧠 Overview
+
+**DataScope API** es una API REST profesional orientada al **Análisis Exploratorio de Datos (EDA)** construida sobre el ecosistema moderno de Python. Permite a científicos de datos, analistas e ingenieros interactuar con datasets a través de endpoints HTTP sin necesidad de entornos de notebook, facilitando la integración con aplicaciones web, pipelines de datos o herramientas de BI.
+
+El proyecto sigue una **arquitectura en capas** bien definida (routers → services → schemas) que separa responsabilidades y garantiza escalabilidad. Desde la carga de un archivo CSV o Excel hasta la generación de visualizaciones avanzadas, DataScope API cubre el ciclo completo de exploración de datos de forma programática.
+
+---
+
+## ⚙️ Features
+
+- 📂 **Carga de datasets** en formatos CSV y Excel mediante multipart/form-data
+- 🔍 **Preview de datos** con control de filas para inspección rápida
+- 🧹 **Limpieza y transformación** — eliminación de duplicados, imputación de nulos, conversión de tipos y descarte de columnas
+- 📊 **Estadísticas descriptivas completas** — media, mediana, desviación estándar, mínimo, máximo, nulos, correlaciones
+- 📈 **Distribución de variables** con soporte de bins configurable
+- 🎨 **Visualizaciones dinámicas** en múltiples tipos de gráfico (histogram, boxplot, scatter, line, bar, heatmap, violin, pairplot, countplot)
+- 📝 **Documentación automática** con Swagger UI y ReDoc integrados
+- 🐳 **Docker-ready** para despliegue inmediato sin configuración de entorno
+- ✅ **Manejo robusto de errores** y respuestas JSON consistentes en todos los endpoints
+
+---
+
+## 🛠️ Tech Stack
+
+| Capa | Tecnología | Rol |
+|------|-----------|-----|
+| Framework web | **FastAPI** | Enrutamiento, validación, documentación automática |
+| Servidor ASGI | **Uvicorn** | Servidor de producción y desarrollo |
+| Análisis de datos | **Pandas** | Manipulación, limpieza y transformación de datasets |
+| Computación numérica | **NumPy** | Operaciones matriciales y estadísticas |
+| Visualización | **Matplotlib + Seaborn** | Generación de gráficos estáticos y estadísticos |
+| Validación | **Pydantic** | Schemas de entrada/salida y configuración tipada |
+| Contenerización | **Docker** | Empaquetado y despliegue portable |
+| Lenguaje | **Python 3.11+** | Runtime principal (98.8% del código) |
+
+---
+
+## 📦 Installation
+
+### Opción 1 — Entorno local
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/devsebastian44/DataScope-API.git
+cd DataScope-API
+
+# 2. Crear y activar entorno virtual
+python -m venv venv
+
+# Linux / macOS
+source venv/bin/activate
+
+# Windows
+.\venv\Scripts\Activate
+
+# 3. Instalar dependencias
+pip install -r requirements.txt
+
+# 4. Configurar variables de entorno
+cp .env.example .env
+# Editar .env según sea necesario
+
+# 5. Ejecutar la aplicación
+python -m app.main
+```
+
+### Opción 2 — Docker
+
+```bash
+# Construir la imagen
+docker build -t datascope-api .
+
+# Ejecutar el contenedor
+docker run -p 8000:8000 datascope-api
+```
+
+---
+
+## ▶️ Usage
+
+Una vez levantada la aplicación, la API estará disponible en `http://localhost:8000`.
+
+| Interfaz | URL |
+|----------|-----|
+| Swagger UI | `http://localhost:8000/docs` |
+| ReDoc | `http://localhost:8000/redoc` |
+| Health Check | `http://localhost:8000/health` |
+
+### Flujo básico en Python
+
+```python
+import requests
+
+# 1. Subir dataset
+files = {'file': open('data.csv', 'rb')}
+upload = requests.post('http://localhost:8000/api/v1/dataset/upload', files=files)
+dataset_id = upload.json()['data']['dataset_id']
+
+# 2. Limpiar datos
+clean_payload = {
+    "dataset_id": dataset_id,
+    "drop_duplicates": True,
+    "fill_na_strategy": "mean"
+}
+requests.post('http://localhost:8000/api/v1/dataset/clean', json=clean_payload)
+
+# 3. Estadísticas descriptivas
+stats = requests.post('http://localhost:8000/api/v1/statistics/descriptive', json={
+    "dataset_id": dataset_id,
+    "include_correlations": True
+})
+print(stats.json())
+
+# 4. Generar visualización
+viz = requests.post('http://localhost:8000/api/v1/visualization/generate', json={
+    "dataset_id": dataset_id,
+    "plot_type": "histogram",
+    "x_column": "edad",
+    "title": "Distribución de Edades",
+    "color": "steelblue",
+    "plot_format": "png"
+})
+print(viz.json()['data']['plot_url'])
+```
+
+### Tipos de gráficos disponibles
+
+| Tipo | Descripción |
+|------|-------------|
+| `histogram` | Distribución de frecuencias |
+| `boxplot` | Diagrama de caja y bigotes |
+| `scatter` | Dispersión entre dos variables |
+| `line` | Serie de tiempo o tendencia |
+| `bar` | Comparación por categorías |
+| `heatmap` | Matriz de correlación visual |
+| `violin` | Distribución y densidad |
+| `pairplot` | Matriz de dispersión multivariable |
+| `countplot` | Conteo de valores categóricos |
+
+---
+
+## 📁 Project Structure
+
+```
+DataScope-API/
+│
+├── app/                        # Código fuente principal
+│   ├── api/
+│   │   └── v1/
+│   │       └── endpoints/      # Routers REST (dataset, statistics, visualization)
+│   ├── services/               # Lógica de negocio y procesamiento de datos
+│   ├── schemas/                # Modelos Pydantic para request/response
+│   ├── core/                   # Configuración, excepciones y respuestas estándar
+│   ├── utils/                  # Funciones utilitarias reutilizables
+│   └── main.py                 # Punto de entrada de la aplicación FastAPI
+│
+├── outputs/                    # Gráficos generados (PNG, SVG, etc.)
+├── tests/                      # Suite de pruebas con pytest
+├── uploads/                    # Almacenamiento temporal de datasets subidos
+│
+├── .env.example                # Plantilla de variables de entorno
+├── .gitignore                  # Archivos ignorados por Git
+├── Dockerfile                  # Imagen Docker de la aplicación
+├── requirements.txt            # Dependencias del proyecto
+└── README.md                   # Documentación principal
+```
+
+---
+
+## 🔧 Configuration
+
+Variables de entorno disponibles en `.env`:
+
+| Variable | Descripción | Valor por defecto |
+|----------|-------------|-------------------|
+| `API_V1_PREFIX` | Prefijo base de la API | `/api/v1` |
+| `MAX_FILE_SIZE` | Tamaño máximo de archivo en bytes | `52428800` (50 MB) |
+| `ALLOWED_ORIGINS` | Orígenes CORS permitidos | `["*"]` |
+| `PLOT_DPI` | Resolución de gráficos generados | `100` |
+
+---
 
 ## 🧪 Testing
 
 ```bash
+# Ejecutar toda la suite de pruebas
 pytest tests/
+
+# Con reporte de cobertura
+pytest tests/ --cov=app --cov-report=term-missing
 ```
+
+---
+
+## 🌐 Repository Architecture
+
+Este proyecto sigue una arquitectura de repositorio distribuida:
+
+- **GitHub**: Documentación pública, presentación y referencia del proyecto
+- **GitLab**: Implementación completa, laboratorio de desarrollo y pipelines CI/CD
+
+## 🔗 Full Source Code
+
+👉 Código fuente completo disponible en GitLab: [https://gitlab.com/group-data-ia-lab/DataScope-API](https://gitlab.com/group-data-ia-lab/DataScope-API)
+
+---
+
+## 🚀 Roadmap
+
+- [ ] **Autenticación y autorización** — API Keys o JWT para proteger endpoints
+- [ ] **Soporte a bases de datos** — Conexión directa a PostgreSQL, MySQL o MongoDB como fuente de datos
+- [ ] **Exportación de reportes** — Generación de reportes EDA en PDF o HTML
+- [ ] **Análisis avanzado** — Detección de outliers, test de normalidad, análisis de series temporales
+- [ ] **WebSockets** — Streaming de resultados para datasets grandes en tiempo real
+- [ ] **Cache de datasets** — Redis para almacenamiento temporal y mejora de performance
+- [ ] **CI/CD Pipeline** — GitHub Actions para testing automático y despliegue continuo
+- [ ] **Soporte multiusuario** — Sesiones independientes por usuario con namespacing de datasets
+
+---
+
+## 📄 License
+
+Distribuido bajo la licencia **MIT**.
+
+---
+
+## 👨‍💻 Author
+
+**Sebastian**
+- 🐙 GitHub: [@devsebastian44](https://github.com/devsebastian44)
+- 🦊 GitLab: [group-data-ia-lab](https://gitlab.com/group-data-ia-lab)
+
+---
+
+> 💡 *Las contribuciones son bienvenidas. Por favor abre un issue o pull request para proponer mejoras o reportar errores.*
