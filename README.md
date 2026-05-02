@@ -1,9 +1,9 @@
 # DataScope API
 
+![CI](https://github.com/devsebastian44/DataScope-API/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat&logo=fastapi&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=flat&logo=pandas&logoColor=white)
-![Swagger](https://img.shields.io/badge/Swagger-OpenAPI%203.0-85EA2D?style=flat&logo=swagger&logoColor=black)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=flat&logo=github-actions&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat&logo=opensourceinitiative&logoColor=white)
 
@@ -12,6 +12,11 @@
 ## 🧠 Overview
 
 **DataScope API** es una API REST profesional orientada al **Análisis Exploratorio de Datos (EDA)** construida sobre el ecosistema moderno de Python. Permite a científicos de datos, analistas e ingenieros interactuar con datasets a través de endpoints HTTP sin necesidad de entornos de notebook, facilitando la integración con aplicaciones web, pipelines de datos o herramientas de BI.
+
+> [!IMPORTANT]
+> **Ethical Notice**: Este proyecto tiene fines educativos y de análisis exploratorio de datos. Asegúrese de tener los derechos necesarios para procesar los datos que cargue.
+
+---
 
 El proyecto sigue una **arquitectura en capas** bien definida (routers → services → schemas) que separa responsabilidades y garantiza escalabilidad. Desde la carga de un archivo CSV o Excel hasta la generación de visualizaciones avanzadas, DataScope API cubre el ciclo completo de exploración de datos de forma programática.
 
@@ -227,7 +232,14 @@ Distribuido bajo la licencia **MIT**.
 **Sebastian**
 - 🐙 GitHub: [@devsebastian44](https://github.com/devsebastian44)
 
-
 ---
 
-> 💡 *Las contribuciones son bienvenidas. Por favor abre un issue o pull request para proponer mejoras o reportar errores.*
+## 🤝 Contributing
+
+Las contribuciones son lo que hacen que la comunidad de código abierto sea un lugar increíble para aprender, inspirar y crear. Cualquier contribución que hagas será **muy apreciada**.
+
+1. Fork del proyecto
+2. Crea tu rama de característica (`git checkout -b feature/AmazingFeature`)
+3. Haz commit de tus cambios (`git commit -m 'feat: add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
