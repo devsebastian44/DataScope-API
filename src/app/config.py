@@ -22,8 +22,8 @@ class Settings(BaseSettings):
     # File Upload Settings
     MAX_FILE_SIZE: int = 50 * 1024 * 1024  # 50 MB
     ALLOWED_EXTENSIONS: set = {".csv", ".xlsx", ".xls"}
-    UPLOAD_DIR: Path = Path("uploads")
-    OUTPUT_DIR: Path = Path("outputs")
+    UPLOAD_DIR: Path = Path("data/uploads")
+    OUTPUT_DIR: Path = Path("data/outputs")
 
     # Data Processing
     MAX_ROWS_PREVIEW: int = 100
