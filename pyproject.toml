@@ -1,6 +1,6 @@
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "--cov=src/app --cov-report=term"
+addopts = "--cov=app --cov-report=term"
 testpaths = ["tests"]
 
 [tool.ruff]
