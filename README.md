@@ -2,9 +2,9 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat&logo=fastapi&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=flat&logo=pandas&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-OpenAPI%203.0-85EA2D?style=flat&logo=swagger&logoColor=black)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=flat&logo=github-actions&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat&logo=opensourceinitiative&logoColor=white)
 
 ---
@@ -203,19 +203,6 @@ pytest tests/ --cov=app --cov-report=term-missing
 
 ---
 
-## 🌐 Repository Architecture
-
-Este proyecto sigue una arquitectura de repositorio distribuida:
-
-- **GitHub**: Documentación pública, presentación y referencia del proyecto
-- **GitLab**: Implementación completa, laboratorio de desarrollo y pipelines CI/CD
-
-## 🔗 Full Source Code
-
-👉 Código fuente completo disponible en GitLab: [https://gitlab.com/group-data-ia-lab/DataScope-API](https://gitlab.com/group-data-ia-lab/DataScope-API)
-
----
-
 ## 🚀 Roadmap
 
 - [ ] **Autenticación y autorización** — API Keys o JWT para proteger endpoints
@@ -239,7 +226,7 @@ Distribuido bajo la licencia **MIT**.
 
 **Sebastian**
 - 🐙 GitHub: [@devsebastian44](https://github.com/devsebastian44)
-- 🦊 GitLab: [group-data-ia-lab](https://gitlab.com/group-data-ia-lab)
+
 
 ---
 
